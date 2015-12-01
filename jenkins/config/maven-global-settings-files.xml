@@ -19,9 +19,9 @@
   &lt;/mirrors&gt;
   &lt;servers&gt;
       &lt;server&gt;
-        &lt;id&gt;nexus-release-repository&lt;/id&gt;
+        &lt;id&gt;artifactory&lt;/id&gt;
         &lt;username&gt;admin&lt;/username&gt;
-        &lt;password&gt;admin123&lt;/password&gt;
+        &lt;password&gt;password&lt;/password&gt;
       &lt;/server&gt;
     &lt;/servers&gt;
     &lt;profiles&gt;
@@ -41,7 +41,7 @@
           &lt;/properties&gt;
       &lt;/profile&gt;
       &lt;profile&gt;
-      &lt;id&gt;nexus&lt;/id&gt;
+      &lt;id&gt;artifactory&lt;/id&gt;
       &lt;!--Enable snapshots for the built in central repo to direct --&gt;
       &lt;!--all requests to nexus via the mirror --&gt;
       &lt;repositories&gt;
@@ -64,7 +64,7 @@
 	&lt;/profiles&gt;
   &lt;activeProfiles&gt;
     &lt;!--make the profile active all the time --&gt;
-    &lt;activeProfile&gt;nexus&lt;/activeProfile&gt;
+    &lt;activeProfile&gt;artifactory&lt;/activeProfile&gt;
   &lt;/activeProfiles&gt;
 &lt;/settings&gt;
 </content>

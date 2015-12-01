@@ -4,7 +4,7 @@
     <string>OldData</string>
     <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
   </disabledAdministrativeMonitors>
-  <version>1.609.3</version>
+  <version>1.625.2</version>
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>

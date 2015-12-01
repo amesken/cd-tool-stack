@@ -1,4 +1,4 @@
-FROM jenkins
+FROM jenkins:1.625.2
 
 COPY plugins.txt /var/jenkins_home/plugins.txt
 RUN /usr/local/bin/plugins.sh /var/jenkins_home/plugins.txt
@@ -28,3 +28,8 @@ COPY config/maven-global-settings-files.xml /usr/share/jenkins/ref/maven-global-
 COPY config/credentials.xml /usr/share/jenkins/ref/credentials.xml
 COPY config/ssh-keys/cd-demo /usr/share/jenkins/ref/.ssh/id_rsa
 COPY config/ssh-keys/cd-demo.pub /usr/share/jenkins/ref/.ssh/id_rsa.pub
+
+# Aanmaken local volume directories
+ENV JENKINS_HOME /var/jenkins_home
+RUN mkdir -p data_volume/jenkins && chmod 777 data_volume/jenkins
+VOLUME ["$JENKINS_HOME"]

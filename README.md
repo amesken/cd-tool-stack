@@ -1,9 +1,9 @@
-# CI Tools Demo
+# CI/CD Tools Demo
 
-This GitHub repository contains Dockerfiles for running a set of Continuous Integration Tools with a single command.
+This GitHub repository contains Dockerfiles for running a set of Continuous Integration/Delivery Tools with a single command.
 The diagram contains all tools used in the Docker containers.
 
-![Docker CI Tools](screenshots/docker-ci-tools.png)
+![Docker CD Tools](screenshots/docker-cd-tools.png)
 
 ## Prerequisites (Mac)
 
@@ -15,7 +15,7 @@ Since all containers run in a single VM (virtualbox), this VM needs enough memor
 ### Step 0 - List Docker Machine
 
 ```
-~/git/docker-ci-tool-stack$ docker-machine ls
+~/git/docker-cd-tool-stack$ docker-machine ls
 
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM
 default   *        virtualbox   Running   tcp://192.168.99.100:2376
@@ -44,8 +44,8 @@ docker-machine start default
 To get all docker containers up and running use:
 
 ```
-git clone git@github.com:marcelbirkner/docker-ci-tool-stack.git
-cd docker-ci-tool-stack
+git clone git@github.com:amesken/cd-tool-stack.git
+cd cd-tool-stack
 docker-compose up
 ```
 
@@ -53,9 +53,9 @@ docker-compose up
 
 | *Tool* | *Link* | *Credentials* |
 | ------------- | ------------- | ------------- |
-| Jenkins | http://${docker-machine ip default}:8080/jenkins/ | no login required |
-| SonarQube | http://${docker-machine ip default}:9000/ | admin/admin |
-| Nexus | http://${docker-machine ip default}:8081/nexus | admin/admin123 |
+| Jenkins | http://${docker-machine ip default}:18080/jenkins/ | no login required |
+| SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
+| Artifactory | http://${docker-machine ip default}:18081/artifactory | admin/password |
 | GitLab | http://${docker-machine ip default}:10080/ | root/5iveL!fe |
 | Selenium Grid | http://${docker-machine ip default}:4444/grid/console | no login required |
 
@@ -66,7 +66,7 @@ Here is an overview of all tools:
 - GitLab is used for storing the Sourcecode
 - Jenkins contains build job and is triggered once projects in GitLab are updated
 - As part of the CI build, Jenkins triggers a static code analysis and the results are stored in SonarQube
-- The Maven build uses Nexus as a Proxy Repository for all 3rd party libs. The build artefacts are deployed to the Nexus Release Repository
+- The Maven build uses Artifactory as a Proxy Repository for all 3rd party libs. The build artefacts are deployed to the Artifactory Release Repository
 - The Selenium Grid contains Docker containers running Chrome and Firefox and is used for UI tests
 
 ### Jenkins Jobs
@@ -78,7 +78,7 @@ The Jobs cover the following tasks:
 - Unit Tests
 - Static Source Analysis results are stored in SonarQube
 - JaCoCo Test Coverage
-- Deployment to Nexus
+- Deployment to Artifactory
 - Jenkins Job DSL examples
 - Selenium UI Test
 
@@ -90,9 +90,9 @@ The Jobs cover the following tasks:
 
 ![Jenkins Jobs](screenshots/sonar-analysis-conference-app.png)
 
-### Nexus Repository
+### Artifactory Repository
 
-![Nexus Proxy Repository](screenshots/nexus.png)
+![Artifactory Proxy Repository](screenshots/artifactory.png)
 
 ### Selenium Grid
 
