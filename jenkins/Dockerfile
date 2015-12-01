@@ -31,5 +31,11 @@ COPY config/ssh-keys/cd-demo.pub /usr/share/jenkins/ref/.ssh/id_rsa.pub
 
 # Aanmaken local volume directories
 ENV JENKINS_HOME /var/jenkins_home
+
+# Switch to root user to create folders
+USER root
 RUN mkdir -p data_volume/jenkins && chmod 777 data_volume/jenkins
+
+# Switch back to jenkins user
+USER jenkins
 VOLUME ["$JENKINS_HOME"]
