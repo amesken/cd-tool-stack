@@ -7,8 +7,8 @@
   <installations/>
   <installations2>
     <hudson.plugins.groovy.GroovyInstallation>
-      <name>Groovy 2.4.3</name>
-      <home>/usr/share/groovy-2.4.3</home>
+      <name>Groovy 2.4.5</name>
+      <home>/usr/share/groovy-2.4.5</home>
       <properties/>
     </hudson.plugins.groovy.GroovyInstallation>
   </installations2>

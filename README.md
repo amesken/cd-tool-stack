@@ -53,7 +53,7 @@ docker-compose up
 
 | *Tool* | *Link* | *Credentials* |
 | ------------- | ------------- | ------------- |
-| Jenkins | http://${docker-machine ip default}:18080/jenkins/ | no login required |
+| Jenkins | http://${docker-machine ip default}:18080/ | no login required |
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Artifactory | http://${docker-machine ip default}:18081/artifactory | admin/password |
 | GitLab | http://${docker-machine ip default}:10080/ | root/5iveL!fe |

@@ -1,7 +1,7 @@
 artifactory:
   build: ./artifactory
   ports:
-    - "18081:8081"
+    - "18081:8080"
   volumes:
     - ./data_volume/artifactory/data:/artifactory/data:rw
     - ./data_volume/artifactory/logs:/artifactory/logs:rw
@@ -26,6 +26,8 @@ sonar:
    - "5432:5432"
   environment:
    - SONARQUBE_JDBC_URL=jdbc:postgresql://192.168.99.100:5432/sonar
+   - SONARQUBE_JDBC_USERNAME=sonar
+   - SONARQUBE_JDBC_PASSWORD=sonar
   volumes:
     - ./data_volume/sonarqube/data:/opt/sonarqube/data:rw
     - ./data_volume/sonarqube/logs:/opt/sonarqube/logs:rw
