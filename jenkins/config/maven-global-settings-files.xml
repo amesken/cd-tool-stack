@@ -36,7 +36,7 @@
               &lt;/sonar.jdbc.url&gt;
               &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
               &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
-              &lt;!-- Optional URL to server. Default value is http://localhost:9000 --&gt;
+              &lt;!-- Optional URL to server. Default value is http://192.168.99.100:9000 --&gt;
               &lt;sonar.host.url&gt;http://${DOCKERCITOOLSTACK_SONAR_1_PORT_5432_TCP_ADDR}:9000&lt;/sonar.host.url&gt;
           &lt;/properties&gt;
       &lt;/profile&gt;
