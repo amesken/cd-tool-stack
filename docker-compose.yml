@@ -43,7 +43,7 @@ selhub:
   ports:
     - 4444:4444
 
-nodeff:
+nodefirefox:
   image: selenium/node-firefox-debug
   ports:
     - 5900

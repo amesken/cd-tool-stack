@@ -46,3 +46,5 @@ RUN mkdir -p data_volume/artifactory/data && chmod 777 data_volume/artifactory/d
 VOLUME ["$ARTIFACTORY_HOME/data", "$ARTIFACTORY_HOME/logs", "$ARTIFACTORY_HOME/backup"]
 
 WORKDIR $ARTIFACTORY_HOME
+
+EXPOSE 8081

@@ -5,7 +5,7 @@ The diagram contains all tools used in the Docker containers.
 
 ![Docker CD Tools](screenshots/docker-cd-tools.png)
 
-## Prerequisites (Mac)
+## Prerequisites
 
 You should have Docker Toolbox installed, see https://www.docker.com/toolbox
 

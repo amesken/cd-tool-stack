@@ -1,7 +1,7 @@
 # Artifactory
 
 Run [Artifactory](http://www.jfrog.com/home/v_artifactory_opensource_overview) inside a Docker container.
-
+This image is based on the following image:
 Link: [mattgruter/artifactory](https://registry.hub.docker.com/u/mattgruter/artifactory/)
 
 
@@ -13,23 +13,26 @@ Artifactories `data`, `logs` and `backup` directories are exported as volumes:
     /artifactory/backup
 
 ## Ports
-The web server is accessible through port `8080`.
+The web server is accessible through port `8081`.
 
 ## Example
 To run artifactory do:
 
-    docker run -p 8080:8080 mattgruter/artifactory
+    docker run -p 18081:8081 amesken/artifactory
 
-Now point your browser to http://192.168.99.100:8080
+Now point your browser to http://192.168.99.100:18081
 
 
 ## URLs
-The artifactory servlet is available at the `artifactory/` path. However a filter redirects all paths outside of `artifactory/` to the artifactory servlet. Thus instead of linking to the URL http://192.168.99.100:8080/artifactory/libs-release-local you can just link to http://192.168.99.100:8080/libs-release-local (i.e. omitting the subpath `artifactory/`).
+The artifactory servlet is available at the `artifactory/` path. However a filter redirects all paths outside of `artifactory/` to the artifactory servlet. Thus instead of linking to the URL http://192.168.99.100:18081/artifactory/libs-release-local you can just link to http://192.168.99.100:18081/libs-release-local (i.e. omitting the subpath `artifactory/`).
 
 ## Runtime options
 Inject the environment variable `RUNTIME_OPTS` when starting a container to set Tomcat's runtime options (i.e. `CATALANA_OPTS`). The most common use case is to set the heap size:
 
-    docker run -e RUNTIME_OPTS="-Xms256m -Xmx512m" -P mattgruter/artifactory
+    docker run -e RUNTIME_OPTS="-Xms256m -Xmx512m" -P amesken/artifactory
+
+
+# Advanced Artifactory
 
 ## Switching to Artifactory Pro
 If you are using Artifactory Pro, the artifactory war archive has to be replaced. The image tagged `-onbuild` is built with an `ONBUILD` trigger for this purpose. Unpack the Artifactory Pro distribution ZIP file and place the file `artifactory.war` (located in the archive) in the same directory as a simple Dockerfile that extends the `onbuild` image:
