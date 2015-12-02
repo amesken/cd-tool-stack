@@ -8,6 +8,7 @@ ENV JAVA_OPTS="-Xmx4096"
 ENV JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300"
 ENV JENKINS_HOME="/var/jenkins_home"
 ENV JENKINS_SHARED_REFERENCE="/usr/share/jenkins/ref"
+ENV GROOVY_VERSION="2.4.5"
 
 ############################################
 # Configure Jenkins
@@ -41,7 +42,14 @@ COPY config/ssh-keys/id_rsa.pub $JENKINS_SHARED_REFERENCE/.ssh/id_rsa.pub
 
 # Switch to root user to create folders, change jenkins group and get groovy
 USER root
-RUN yum -y update && yum -y install groovy && yum -y clean all
+
+RUN \ https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.4.5.zip
+  echo $GROOVY_SHA1 groovy.zip > groovy.zip.sha1 && \
+  curl -L -o groovy.zip https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-$GROOVY_VERSION.zip && \
+  sha1sum -c groovy.zip.sha1 && \
+  unzip -j groovy.zip -d /usr/share/groovy-$GROOVY_VERSION && \
+  rm groovy.zip
+
 RUN mkdir -p data_volume/jenkins && chmod 777 data_volume/jenkins && usermod -g root jenkins
 
 VOLUME ["$JENKINS_HOME"]

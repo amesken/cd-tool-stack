@@ -23,7 +23,6 @@ RUN \
   echo $ARTIFACTORY_SHA1 artifactory.zip > artifactory.zip.sha1 && \
   curl -L -o artifactory.zip https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-${ARTIFACTORY_VERSION}.zip && \
 #  PRO VERSIE https://bintray.com/artifact/download/jfrog/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/${ARTIFACTORY_VERSION}/jfrog-artifactory-pro-${ARTIFACTORY_VERSION}.zip
-#  ORIGINEEL curl -L -o artifactory.zip https://bintray.com/artifact/download/jfrog/artifactory/artifactory-${ARTIFACTORY_VERSION}.zip && \
   sha1sum -c artifactory.zip.sha1 && \
   unzip -j artifactory.zip "artifactory-*/webapps/artifactory.war" -d webapps && \
   rm artifactory.zip
