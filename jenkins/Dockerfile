@@ -4,8 +4,8 @@ MAINTAINER Andries Mesken <andries.mesken@ziggo.nl>
 
 USER root
 
-ENV JAVA_OPTS="-Xmx4096"
-ENV JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300"
+ENV JAVA_OPTS="-Xmx4G -Xms2G"
+ENV JENKINS_OPTS="--handlerCountStartup=50 --handlerCountMax=150"
 ENV JENKINS_HOME="/var/jenkins_home"
 ENV JENKINS_SHARED_REFERENCE="/usr/share/jenkins/ref"
 ENV GROOVY_VERSION="2.4.5"
@@ -44,7 +44,6 @@ COPY config/ssh-keys/id_rsa.pub $JENKINS_SHARED_REFERENCE/.ssh/id_rsa.pub
 USER root
 # http://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.5.zip
 RUN \ 
-  rm -f /usr/share/groovy/* && \
   curl -L -o groovy.zip https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-$GROOVY_VERSION.zip && \
   unzip -fo groovy.zip -d /usr/share/groovy-$GROOVY_VERSION && \
   rm groovy.zip
