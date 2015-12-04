@@ -36,11 +36,6 @@ RUN echo 'export CATALINA_OPTS="$RUNTIME_OPTS"' > bin/setenv.sh
 RUN mkdir -p /artifactory
 ENV ARTIFACTORY_HOME /artifactory
 
-# Aanmaken local data volume directories
-RUN mkdir -p data_volume/artifactory/data && chmod 777 data_volume/artifactory/data \
-  && mkdir -p data_volume/artifactory/logs && chmod 777 data_volume/artifactory/logs \
-  && mkdir -p data_volume/artifactory/backup && chmod 777 data_volume/artifactory/backup
-  
 # Expose Artifactories data, log and backup directory.
 VOLUME ["$ARTIFACTORY_HOME/data", "$ARTIFACTORY_HOME/logs", "$ARTIFACTORY_HOME/backup"]
 

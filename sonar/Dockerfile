@@ -11,11 +11,6 @@ RUN cd /opt/sonarqube/extensions/plugins/ \
   && curl -o sonar-web-plugin-2.4.jar -fSL $SONAR_DOWNLOAD_URL/sonar-web-plugin/sonar-web-plugin-2.4.jar \
   && curl -o sonar-scm-git-plugin-1.1.jar -fSL http://downloads.sonarsource.com/plugins/org/codehaus/sonar-plugins/sonar-scm-git-plugin/1.1/sonar-scm-git-plugin-1.1.jar
 
-# Aanmaken local data volume directories
-RUN mkdir -p data_volume/sonarqube/data && chmod 777 data_volume/sonarqube/data \
-  && mkdir -p data_volume/sonarqube/logs && chmod 777 data_volume/sonarqube/logs \
-  && mkdir -p data_volume/sonarqube/extensions && chmod 777 data_volume/sonarqube/extensions
-
 VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/logs", "$SONARQUBE_HOME/extensions"]
 
 WORKDIR $SONARQUBE_HOME

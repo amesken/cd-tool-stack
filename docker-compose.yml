@@ -3,9 +3,9 @@ artifactory:
   ports:
     - "18081:8080"
   volumes:
-    - ./data_volume/artifactory/data:/artifactory/data:rw
-    - ./data_volume/artifactory/logs:/artifactory/logs:rw
-    - ./data_volume/artifactory/backup:/artifactory/backup:rw
+    - /d/docker/data/artifactory/data:/artifactory/data:rw
+    - /d/docker/data/artifactory/logs:/artifactory/logs:rw
+    - /d/docker/data/artifactory/backup:/artifactory/backup:rw
 
 jenkins:
   build: ./jenkins
@@ -17,7 +17,7 @@ jenkins:
     - sonar:sonar
     - selhub:hub
   volumes:
-    - ./data_volume/jenkins:/var/jenkins_home:rw
+    - /d/docker/data/jenkins:/var/jenkins_home:rw
 
 sonar:
   build: ./sonar
@@ -28,9 +28,9 @@ sonar:
    - SONARQUBE_JDBC_USERNAME=sonar
    - SONARQUBE_JDBC_PASSWORD=sonar
   volumes:
-    - ./data_volume/sonarqube/data:/opt/sonarqube/data:rw
-    - ./data_volume/sonarqube/logs:/opt/sonarqube/logs:rw
-    - ./data_volume/sonarqube/extensions:/opt/sonarqube/extensions:rw
+    - /d/docker/data/sonarqube/data:/opt/sonarqube/data:rw
+    - /d/docker/data/sonarqube/logs:/opt/sonarqube/logs:rw
+    - /d/docker/data/sonarqube/extensions:/opt/sonarqube/extensions:rw
 
 selhub:
   image: selenium/hub
@@ -52,16 +52,18 @@ nodechrome:
     - selhub:hub
 
 postgresql:
-  image: sameersbn/postgresql
+  build: ./postgresql
   environment:
     - DB_USER=gitlab
     - DB_PASS=password
     - DB_NAME=gitlabhq_production
   volumes:
-    - /srv/docker/gitlab/postgresql:/var/lib/postgresql
+    - /d/docker/data/postgresql/run:/run/postgresql:rw
+    - /d/docker/data/postgresql/data:/var/lib/postgresql:rw
+    - /d/docker/data/postgresql/log:/var/log/postgresql:rw
     
 gitlab:
-  image: sameersbn/gitlab
+  build: ./gitlab
   links:
     - redis:redisio
     - postgresql:postgresql
@@ -105,9 +107,11 @@ gitlab:
     - IMAP_SSL=true
     - IMAP_STARTTLS=false
   volumes:
-    - /srv/docker/gitlab/gitlab:/home/git/data
+    - /d/docker/data/gitlab/data:/home/git/data:rw
+    - /d/docker/data/gitlab/log:/var/log/gitlab:rw
     
 redis:
-  image: sameersbn/redis
+  build: ./redis
   volumes:
-    - /srv/docker/gitlab/redis:/var/lib/redis
+    - /d/docker/data/redis/data:/var/lib/redis:rw
+    - /d/docker/data/redis/log:/var/log/redis:rw

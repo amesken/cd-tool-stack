@@ -40,13 +40,13 @@ COPY config/credentials.xml $JENKINS_SHARED_REFERENCE/credentials.xml
 COPY config/ssh-keys/id_rsa $JENKINS_SHARED_REFERENCE/.ssh/id_rsa
 COPY config/ssh-keys/id_rsa.pub $JENKINS_SHARED_REFERENCE/.ssh/id_rsa.pub
 
-# Switch to root user to create folders, change jenkins group and get groovy
+# Switch to root user to change jenkins group and get groovy
 USER root
 # http://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.5.zip
 RUN \ 
   curl -L -o groovy.zip https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-$GROOVY_VERSION.zip && \
   unzip -fo groovy.zip -d /usr/share/groovy-$GROOVY_VERSION && \
   rm groovy.zip
-RUN mkdir -p data_volume/jenkins && chmod 777 data_volume/jenkins && usermod -g root jenkins
+RUN usermod -g root jenkins
 
 VOLUME ["$JENKINS_HOME"]
