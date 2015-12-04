@@ -3,9 +3,9 @@ artifactory:
   ports:
     - "18081:8080"
   volumes:
-    - /d/docker/data/artifactory/data:/artifactory/data:rw
-    - /d/docker/data/artifactory/logs:/artifactory/logs:rw
-    - /d/docker/data/artifactory/backup:/artifactory/backup:rw
+    - /c/Users/Andries/docker/data/artifactory/data:/artifactory/data:rw
+    - /c/Users/Andries/docker/data/artifactory/logs:/artifactory/logs:rw
+    - /c/Users/Andries/docker/data/artifactory/backup:/artifactory/backup:rw
 
 jenkins:
   build: ./jenkins
@@ -17,7 +17,7 @@ jenkins:
     - sonar:sonar
     - selhub:hub
   volumes:
-    - /d/docker/data/jenkins:/var/jenkins_home:rw
+    - /c/Users/Andries/docker/data/jenkins:/var/jenkins_home:rw
 
 sonar:
   build: ./sonar
@@ -28,9 +28,9 @@ sonar:
    - SONARQUBE_JDBC_USERNAME=sonar
    - SONARQUBE_JDBC_PASSWORD=sonar
   volumes:
-    - /d/docker/data/sonarqube/data:/opt/sonarqube/data:rw
-    - /d/docker/data/sonarqube/logs:/opt/sonarqube/logs:rw
-    - /d/docker/data/sonarqube/extensions:/opt/sonarqube/extensions:rw
+    - /c/Users/Andries/docker/data/sonarqube/data:/opt/sonarqube/data:rw
+    - /c/Users/Andries/docker/data/sonarqube/logs:/opt/sonarqube/logs:rw
+    - /c/Users/Andries/docker/data/sonarqube/extensions:/opt/sonarqube/extensions:rw
 
 selhub:
   image: selenium/hub
@@ -58,9 +58,9 @@ postgresql:
     - DB_PASS=password
     - DB_NAME=gitlabhq_production
   volumes:
-    - /d/docker/data/postgresql/run:/run/postgresql:rw
-    - /d/docker/data/postgresql/data:/var/lib/postgresql:rw
-    - /d/docker/data/postgresql/log:/var/log/postgresql:rw
+    - /c/Users/Andries/docker/data/postgresql/run:/run/postgresql:rw
+    - /c/Users/Andries/docker/data/postgresql/data:/var/lib/postgresql:rw
+    - /c/Users/Andries/docker/data/postgresql/log:/var/log/postgresql:rw
     
 gitlab:
   build: ./gitlab
@@ -107,11 +107,11 @@ gitlab:
     - IMAP_SSL=true
     - IMAP_STARTTLS=false
   volumes:
-    - /d/docker/data/gitlab/data:/home/git/data:rw
-    - /d/docker/data/gitlab/log:/var/log/gitlab:rw
+    - /c/Users/Andries/docker/data/gitlab/data:/home/git/data:rw
+    - /c/Users/Andries/docker/data/gitlab/log:/var/log/gitlab:rw
     
 redis:
   build: ./redis
   volumes:
-    - /d/docker/data/redis/data:/var/lib/redis:rw
-    - /d/docker/data/redis/log:/var/log/redis:rw
+    - /c/Users/Andries/docker/data/redis/data:/var/lib/redis:rw
+    - /c/Users/Andries/docker/data/redis/log:/var/log/redis:rw

@@ -47,6 +47,6 @@ RUN \
   curl -L -o groovy.zip https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-$GROOVY_VERSION.zip && \
   unzip -fo groovy.zip -d /usr/share/groovy-$GROOVY_VERSION && \
   rm groovy.zip
-RUN mkdir -p /d/docker/data/jenkins && chmod 777 /d/docker/data/jenkins && usermod -g root jenkins
+RUN mkdir -p /c/Users/Andries/docker/data/jenkins && chmod 777 /c/Users/Andries/docker/data/jenkins && usermod -g root jenkins
 
 VOLUME ["$JENKINS_HOME"]

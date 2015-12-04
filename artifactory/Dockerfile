@@ -37,9 +37,9 @@ RUN mkdir -p /artifactory
 ENV ARTIFACTORY_HOME /artifactory
 
 # creeer en zet rechten op local data folders
-RUN mkdir -p /d/docker/data/artifactory/data && chmod 777 /d/docker/data/artifactory/data && \
-  mkdir -p /d/docker/data/artifactory/logs && chmod 777 /d/docker/data/artifactory/logs && \
-  mkdir -p /d/docker/data/artifactory/backup && chmod 777 /d/docker/data/artifactory/backup
+RUN mkdir -p /c/Users/Andries/docker/data/artifactory/data && chmod 777 /c/Users/Andries/docker/data/artifactory/data && \
+  mkdir -p /c/Users/Andries/docker/data/artifactory/logs && chmod 777 /c/Users/Andries/docker/data/artifactory/logs && \
+  mkdir -p /c/Users/Andries/docker/data/artifactory/backup && chmod 777 /c/Users/Andries/docker/data/artifactory/backup
   
 # Expose Artifactories data, log and backup directory.
 VOLUME ["$ARTIFACTORY_HOME/data", "$ARTIFACTORY_HOME/logs", "$ARTIFACTORY_HOME/backup"]
