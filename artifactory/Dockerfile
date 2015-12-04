@@ -36,6 +36,11 @@ RUN echo 'export CATALINA_OPTS="$RUNTIME_OPTS"' > bin/setenv.sh
 RUN mkdir -p /artifactory
 ENV ARTIFACTORY_HOME /artifactory
 
+# creeer en zet rechten op local data folders
+RUN mkdir -p /d/docker/data/artifactory/data && chmod 777 /d/docker/data/artifactory/data && \
+  mkdir -p /d/docker/data/artifactory/logs && chmod 777 /d/docker/data/artifactory/logs && \
+  mkdir -p /d/docker/data/artifactory/backup && chmod 777 /d/docker/data/artifactory/backup
+  
 # Expose Artifactories data, log and backup directory.
 VOLUME ["$ARTIFACTORY_HOME/data", "$ARTIFACTORY_HOME/logs", "$ARTIFACTORY_HOME/backup"]
 
