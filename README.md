@@ -1,11 +1,13 @@
-# CI/CD Tools Demo
+# CD Tools Demo
 
-This GitHub repository contains Dockerfiles for running a set of Continuous Integration/Delivery Tools with a single command.
+This GitHub repository contains Dockerfiles for running a set of Continuous Delivery Tools with a single command.
 The diagram contains all tools used in the Docker containers.
 
 ![Docker CD Tools](screenshots/docker-cd-tools.png)
 
-## Prerequisites
+The setup is blatantly copied from https://blog.codecentric.de/en/2015/10/continuous-integration-platform-using-docker-container-jenkins-sonarqube-nexus-gitlab  , so all credits go to Marcel Birkner.
+
+## Prerequisites (Windows)
 
 You should have Docker Toolbox installed, see https://www.docker.com/toolbox
 
@@ -15,7 +17,7 @@ Since all containers run in a single VM (virtualbox), this VM needs enough memor
 ### Step 0 - List Docker Machine
 
 ```
-~/git/docker-cd-tool-stack$ docker-machine ls
+~/github/cd-tool-stack$ docker-machine ls
 
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM
 default   *        virtualbox   Running   tcp://192.168.99.100:2376
@@ -41,12 +43,26 @@ docker-machine start default
 
 ## Getting started
 
+Create the folder structure used to mount the data volumes of the images:
+
+```
+<USER_HOME> = c:\Users\<USER_NAME>
+<DOCKER_VOLUMES> = <USER_HOME>\docker\data
+<DOCKER_VOLUMES>\artifactory\data
+<DOCKER_VOLUMES>\artifactory\logs
+<DOCKER_VOLUMES>\artifactory\backup
+<DOCKER_VOLUMES>\jenkins
+<DOCKER_VOLUMES>\sonarqube\data
+<DOCKER_VOLUMES>\sonarqube\logs
+<DOCKER_VOLUMES>\sonarqube\extensions
+```
+
 To get all docker containers up and running use:
 
 ```
 git clone git@github.com:amesken/cd-tool-stack.git
 cd cd-tool-stack
-docker-compose up
+docker-compose up -d
 ```
 
 ## Access Tools
