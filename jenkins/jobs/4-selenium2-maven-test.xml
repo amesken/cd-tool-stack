@@ -10,7 +10,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.13.3">
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.14.0">
       <projectUrl>https://github.com/marcelbirkner/selenium2-maven-project/</projectUrl>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.25">
@@ -42,7 +42,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean test -Dgrid.server.url=http://${DOCKERCITOOLSTACK_SELHUB_1_PORT_4444_TCP_ADDR}:4444/wd/hub</targets>
+      <targets>clean test -Dgrid.server.url=http://${CDTOOLSTACK_SELHUB_1_PORT_4444_TCP_ADDR}:${CDTOOLSTACK_SELHUB_1_PORT_4444_TCP_PORT}/wd/hub</targets>
       <mavenName>Maven 3.3.3</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>

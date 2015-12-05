@@ -27,7 +27,7 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.38">
+    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.40">
       <scriptText>// Example from https://jenkinsci.github.io/job-dsl-plugin/
 
 def giturl = &apos;https://github.com/quidryan/aws-sdk-test.git&apos;

@@ -27,7 +27,7 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.38">
+    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.40">
       <scriptText>def githubApi = new URL(&quot;https://api.github.com/users/marcelbirkner/repos&quot;)
 def projects = new groovy.json.JsonSlurper().parse(githubApi.newReader())
 

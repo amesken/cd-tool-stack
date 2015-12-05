@@ -14,7 +14,7 @@
       &lt;!--This sends everything else to /public --&gt;
       &lt;id&gt;artifactory&lt;/id&gt;
       &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
-      &lt;url&gt;http://${CDTOOLSTACK_ARTIFACTORY_1_PORT_8081_TCP_ADDR}:18081/artifactory/repo&lt;/url&gt;
+      &lt;url&gt;http://${CDTOOLSTACK_ARTIFACTORY_1_PORT_8081_TCP_ADDR}:${CDTOOLSTACK_ARTIFACTORY_1_PORT_8081_TCP_PORT}/artifactory&lt;/url&gt;
     &lt;/mirror&gt;
   &lt;/mirrors&gt;
   &lt;servers&gt;
@@ -32,12 +32,12 @@
           &lt;/activation&gt;
           &lt;properties&gt;
               &lt;sonar.jdbc.url&gt;
-                jdbc:postgresql://${CDTOOLSTACK_SONAR_1_PORT_5432_TCP_ADDR}:${CDTOOLSTACK_SONAR_1_PORT_5432_TCP_PORT}/sonar
+                ${CDTOOLSTACK_SONAR_1_ENV_SONARQUBE_JDBC_URL}
               &lt;/sonar.jdbc.url&gt;
               &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
               &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
               &lt;!-- Optional URL to server. Default value is http://192.168.99.100:9000 --&gt;
-              &lt;sonar.host.url&gt;http://${CDTOOLSTACK_SONAR_1_PORT_5432_TCP_ADDR}:9000&lt;/sonar.host.url&gt;
+              &lt;sonar.host.url&gt;http://${CDTOOLSTACK_SONAR_1_PORT_9000_TCP_ADDR}:${CDTOOLSTACK_SONAR_1_PORT_9000_TCP_PORT}&lt;/sonar.host.url&gt;
           &lt;/properties&gt;
       &lt;/profile&gt;
       &lt;profile&gt;

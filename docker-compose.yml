@@ -52,18 +52,16 @@ nodechrome:
     - selhub:hub
 
 postgresql:
-  build: ./postgresql
+  image: sameersbn/postgresql:9.4-3
   environment:
     - DB_USER=gitlab
     - DB_PASS=password
     - DB_NAME=gitlabhq_production
   volumes:
-    - /c/Users/Andries/docker/data/postgresql/run:/run/postgresql:rw
-    - /c/Users/Andries/docker/data/postgresql/data:/var/lib/postgresql:rw
-    - /c/Users/Andries/docker/data/postgresql/log:/var/log/postgresql:rw
-    
+    - /srv/docker/gitlab/postgresql:/var/lib/postgresql
+
 gitlab:
-  build: ./gitlab
+  image: sameersbn/gitlab:8.0.3
   links:
     - redis:redisio
     - postgresql:postgresql
@@ -107,11 +105,8 @@ gitlab:
     - IMAP_SSL=true
     - IMAP_STARTTLS=false
   volumes:
-    - /c/Users/Andries/docker/data/gitlab/data:/home/git/data:rw
-    - /c/Users/Andries/docker/data/gitlab/log:/var/log/gitlab:rw
-    
+    - /srv/docker/gitlab/gitlab:/home/git/data
 redis:
-  build: ./redis
+  image: sameersbn/redis:latest
   volumes:
-    - /c/Users/Andries/docker/data/redis/data:/var/lib/redis:rw
-    - /c/Users/Andries/docker/data/redis/log:/var/log/redis:rw
+    - /srv/docker/gitlab/redis:/var/lib/redis
