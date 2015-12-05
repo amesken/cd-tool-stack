@@ -1,5 +1,5 @@
 artifactory:
-  image: amesken/artifactory
+  build: ./artifactory
   ports:
     - "18081:8080"
   volumes:
@@ -8,7 +8,7 @@ artifactory:
     - /c/Users/Andries/docker/data/artifactory/backup:/artifactory/backup:rw
 
 jenkins:
-  image: amesken/jenkins
+  build: ./jenkins
   ports:
     - "18080:8080"
   links:
@@ -20,7 +20,7 @@ jenkins:
     - /c/Users/Andries/docker/data/jenkins:/var/jenkins_home:rw
 
 sonar:
-  image: amesken/sonarqube
+  build: ./sonar
   ports:
    - "19000:9000"
   environment:
@@ -35,19 +35,19 @@ sonar:
 selhub:
   image: selenium/hub
   ports:
-    - "4444:4444"
+    - 4444:4444
 
 nodefirefox:
   image: selenium/node-firefox-debug
   ports:
-    - "5900:5900"
+    - 5900
   links:
     - selhub:hub
 
 nodechrome:
   image: selenium/node-chrome-debug
   ports:
-    - "5900:5900"
+    - 5900
   links:
     - selhub:hub
 
@@ -106,7 +106,6 @@ gitlab:
     - IMAP_STARTTLS=false
   volumes:
     - /srv/docker/gitlab/gitlab:/home/git/data
-
 redis:
   image: sameersbn/redis:latest
   volumes:

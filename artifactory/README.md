@@ -23,6 +23,7 @@ To run artifactory do:
 Now point your browser to http://192.168.99.100:18081
 
 
+
 ## URLs
 The artifactory servlet is available at the `artifactory/` path. However a filter redirects all paths outside of `artifactory/` to the artifactory servlet. Thus instead of linking to the URL http://192.168.99.100:18081/artifactory/libs-release-local you can just link to http://192.168.99.100:18081/libs-release-local (i.e. omitting the subpath `artifactory/`).
 
