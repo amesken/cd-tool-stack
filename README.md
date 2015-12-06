@@ -3,7 +3,7 @@
 This GitHub repository contains Dockerfiles for running a set of Continuous Delivery Tools with a single command.
 The diagram contains all tools used in the Docker containers.
 
-![Docker CD Tools](screenshots/docker-cd-tools.png)
+![Docker CD Tools](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/docker-cd-tools.png)
 
 The setup is blatantly copied from https://blog.codecentric.de/en/2015/10/continuous-integration-platform-using-docker-container-jenkins-sonarqube-nexus-gitlab  , so all credits go to Marcel Birkner.
 
@@ -33,7 +33,7 @@ docker-machine stop default
 
 I am using 6000MB for my VM.
 
-![VirtualBox](screenshots/virtualbox.png)
+![VirtualBox](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/virtualbox.png)
 
 ### Step 3 - Start VM
 
@@ -98,18 +98,18 @@ The Jobs cover the following tasks:
 - Jenkins Job DSL examples
 - Selenium UI Test
 
-![Conference App Jobs](screenshots/jenkins-jobs-1.png)
+![Conference App Jobs](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/jenkins-jobs-1.png)
 
-![Conference App CI Job](screenshots/jenkins-jobs-2-conference-app-ci.png)
+![Conference App CI Job](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/jenkins-jobs-2-conference-app-ci.png)
 
 ### SonarQube Dashboard
 
-![Jenkins Jobs](screenshots/sonar-analysis-conference-app.png)
+![Jenkins Jobs](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/sonar-analysis-conference-app.png)
 
 ### Artifactory Repository
 
-![Artifactory Proxy Repository](screenshots/artifactory.png)
+![Artifactory Proxy Repository](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/artifactory.png)
 
 ### Selenium Grid
 
-![Selenium Grid](screenshots/selenium-grid.png)
+![Selenium Grid](https://github.com/amesken/cd-tool-stack/blob/master/screenshots/selenium-grid.png)
