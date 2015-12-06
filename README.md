@@ -3,7 +3,7 @@
 This GitHub repository contains Dockerfiles for running a set of Continuous Delivery Tools with a single command.
 The diagram contains all tools used in the Docker containers.
 
-![Docker CD Tools](screenshots/docker-cd-tools.png)
+![Docker CD Tools](cd-tool-stack/screenshots/docker-cd-tools.png)
 
 The setup is blatantly copied from https://blog.codecentric.de/en/2015/10/continuous-integration-platform-using-docker-container-jenkins-sonarqube-nexus-gitlab  , so all credits go to Marcel Birkner.
 
