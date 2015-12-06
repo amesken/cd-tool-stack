@@ -40,14 +40,14 @@ selhub:
 nodefirefox:
   image: selenium/node-firefox-debug
   ports:
-    - "5900:5900"
+    - 5900
   links:
     - selhub:hub
 
 nodechrome:
   image: selenium/node-chrome-debug
   ports:
-    - "5900:5900"
+    - 5900
   links:
     - selhub:hub
 

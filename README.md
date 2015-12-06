@@ -65,6 +65,23 @@ cd cd-tool-stack
 docker-compose up -d
 ```
 
+When all containers have been build, check their status:
+
+```
+$ docker-compose ps
+          Name                         Command               State                           Ports
+--------------------------------------------------------------------------------------------------------------------------
+cdtoolstack_artifactory_1   catalina.sh run                  Up      0.0.0.0:18081->8080/tcp, 8081/tcp
+cdtoolstack_gitlab_1        /sbin/entrypoint.sh app:start    Up      0.0.0.0:10022->22/tcp, 443/tcp, 0.0.0.0:10080->80/tcp
+cdtoolstack_jenkins_1       /bin/tini -- /usr/local/bi ...   Up      50000/tcp, 0.0.0.0:18080->8080/tcp
+cdtoolstack_nodechrome_1    /opt/bin/entry_point.sh          Up      0.0.0.0:32769->5900/tcp
+cdtoolstack_nodefirefox_1   /opt/bin/entry_point.sh          Up      0.0.0.0:32768->5900/tcp
+cdtoolstack_postgresql_1    /start                           Up      5432/tcp
+cdtoolstack_redis_1         /sbin/entrypoint.sh              Up      6379/tcp
+cdtoolstack_selhub_1        /opt/bin/entry_point.sh          Up      0.0.0.0:4444->4444/tcp
+cdtoolstack_sonar_1         ./bin/run.sh                     Up      0.0.0.0:19000->9000/tcp
+```
+
 ### Access Tools
 
 | *Tool* | *Link* | *Credentials* |
@@ -84,6 +101,11 @@ Here is an overview of all tools:
 - As part of the CI build, Jenkins triggers a static code analysis and the results are stored in SonarQube
 - The Maven build uses Artifactory as a Proxy Repository for all 3rd party libs. The build artefacts are deployed to the Artifactory Release Repository
 - The Selenium Grid contains Docker containers running Chrome and Firefox and is used for UI tests
+
+
+#### Gitlab
+
+![Gitlab interface](https://raw.githubusercontent.com/amesken/cd-tool-stack/master/screenshots/gitlab.png)
 
 #### Jenkins Jobs
 

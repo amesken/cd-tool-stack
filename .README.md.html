@@ -678,6 +678,20 @@ default   *        virtualbox   Running   tcp://192.168.99.100:2376
 cd cd-tool-stack
 docker-compose up -d
 </code></pre> 
+<p>When all containers have been build, check their status:</p> 
+<pre><code>$ docker-compose ps
+          Name                         Command               State                           Ports
+--------------------------------------------------------------------------------------------------------------------------
+cdtoolstack_artifactory_1   catalina.sh run                  Up      0.0.0.0:18081-&gt;8080/tcp, 8081/tcp
+cdtoolstack_gitlab_1        /sbin/entrypoint.sh app:start    Up      0.0.0.0:10022-&gt;22/tcp, 443/tcp, 0.0.0.0:10080-&gt;80/tcp
+cdtoolstack_jenkins_1       /bin/tini -- /usr/local/bi ...   Up      50000/tcp, 0.0.0.0:18080-&gt;8080/tcp
+cdtoolstack_nodechrome_1    /opt/bin/entry_point.sh          Up      0.0.0.0:32769-&gt;5900/tcp
+cdtoolstack_nodefirefox_1   /opt/bin/entry_point.sh          Up      0.0.0.0:32768-&gt;5900/tcp
+cdtoolstack_postgresql_1    /start                           Up      5432/tcp
+cdtoolstack_redis_1         /sbin/entrypoint.sh              Up      6379/tcp
+cdtoolstack_selhub_1        /opt/bin/entry_point.sh          Up      0.0.0.0:4444-&gt;4444/tcp
+cdtoolstack_sonar_1         ./bin/run.sh                     Up      0.0.0.0:19000-&gt;9000/tcp
+</code></pre> 
 <h3> <a id="user-content-access-tools" class="anchor" href="#access-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Access Tools</h3> 
 <table> 
  <thead> 
@@ -724,6 +738,8 @@ docker-compose up -d
  <li>The Maven build uses Artifactory as a Proxy Repository for all 3rd party libs. The build artefacts are deployed to the Artifactory Release Repository</li> 
  <li>The Selenium Grid contains Docker containers running Chrome and Firefox and is used for UI tests</li> 
 </ul> 
+<h4> <a id="user-content-gitlab" class="anchor" href="#gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gitlab</h4> 
+<p><a href="https://raw.githubusercontent.com/amesken/cd-tool-stack/master/screenshots/gitlab.png" target="_blank"><img src="https://raw.githubusercontent.com/amesken/cd-tool-stack/master/screenshots/gitlab.png" alt="Gitlab interface" style="max-width:100%;" /></a></p> 
 <h4> <a id="user-content-jenkins-jobs" class="anchor" href="#jenkins-jobs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jenkins Jobs</h4> 
 <p>There are several jobs preconfigured in Jenkins. The Jobs cover the following tasks:</p> 
 <ul> 
